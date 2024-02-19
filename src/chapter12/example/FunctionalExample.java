@@ -1,5 +1,11 @@
 package chapter12.example;
 
+import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.IntBinaryOperator;
+import java.util.function.LongSupplier;
+
 public class FunctionalExample {
     public static void main(String[] args) {
 //        MyFunctionalInterface f = (a, b) -> {
@@ -20,13 +26,38 @@ public class FunctionalExample {
         };
         f.method();
 
-        MyFunctionalInterface2 f2 = a -> {
-            System.out.println(a);
+        MyFunctionalInterface2 f2 = (x) -> {
+            System.out.println(x);
         };
         f2.method(2);
 
+//        MyFunctionalInterface2 f2 = new MyFunctionalInterface2() {
+//            @Override
+//            public void method(int x) {
+//                System.out.println(x);
+//            }
+//        };
+//        f2.method(2);
+//        이 코드를 람다식으로 바꾼게 그 위의 코드
 
         MyFunctionalInterface3 f3 = (a, b) -> a * b;
-            System.out.println(f3.method(2, 3));
+        System.out.println(f3.method(2, 3));
+
+
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7);
+        List<Integer> resultlist = list.stream().filter(x -> x%2 == 0).toList();
+
+        System.out.println(list);
+        System.out.println(resultlist);
+
+        LongSupplier ls = () -> {
+            long b = 34L;
+            return b;
         };
+
+        IntBinaryOperator io = Math::max;
+        System.out.println(io.applyAsInt(3, 4));
+//        클래스명::메서드명
+    }
+
 }

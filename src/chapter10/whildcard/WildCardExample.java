@@ -17,12 +17,6 @@ public class WildCardExample {
     }
 
     public static void main(String[] args) {
-//        List<Worker> workers = new ArrayList<>();
-//        List<Person> personList = new ArrayList<>();
-//        personList.addAll(workers);
-
-//        workers.addAll(personList);
-
         Course<Person> personCourse = new Course<>("일반인과정", 4);
         personCourse.add(new Person("일반인"));
         personCourse.add(new Worker("직장인"));
